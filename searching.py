@@ -1,14 +1,15 @@
-import os
 import json
 
 # get current working directory path
-cwd_path = os.getcwd()
+# cwd_path = os.getcwd()
 
 
 def read_data(file_name, field):
 
     if field not in{"unordered_numbers", "ordered_numbers", "dna_sequence"}:
         None
+    else:
+        print(field)
 
     with open(file_name, "r") as file_obj:
         data=json.load(file_obj)
@@ -31,7 +32,7 @@ def linear_search(sekvence, cislo):
     }
 
 def main():
-    sequential_data=read_data("sequential.json","unordered_numbers")
+    sequential_data=read_data("sequential.json","ordered_numbers")
     print(sequential_data)
     print(linear_search(sequential_data,9))
 
