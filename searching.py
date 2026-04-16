@@ -31,10 +31,26 @@ def linear_search(sekvence, cislo):
             "count": count
     }
 
+def binary_search(seznam, cislo):
+    prava =len(seznam) - 1
+    leva = 0
+
+
+    while prava > leva:
+        stred = (leva + prava) // 2
+        if seznam[stred] < cislo:
+            leva = leva + 1
+        elif seznam[stred] > cislo:
+            prava = prava -1
+        else:
+            return stred
+
+
 def main():
     sequential_data=read_data("sequential.json","ordered_numbers")
     print(sequential_data)
     print(linear_search(sequential_data,9))
+    print(binary_search(sequential_data, 23))
 
 if __name__ == '__main__':
     main()
