@@ -1,7 +1,8 @@
 import json
+from generators import unordered_sequence
+import time
+import matplotlib.pyplot as plt
 
-# get current working directory path
-# cwd_path = os.getcwd()
 
 
 def read_data(file_name, field):
@@ -17,7 +18,7 @@ def read_data(file_name, field):
         return s
 
 
-    file_path = os.path.join(cwd_path, file_name)
+
 
 
 def linear_search(sekvence, cislo):
@@ -27,9 +28,9 @@ def linear_search(sekvence, cislo):
         if hodnota == cislo:
             pozice.append(index)
             count += 1
+
     return {"positions":pozice,
-            "count": count
-    }
+            "count": count}
 
 def binary_search(seznam, cislo):
     prava =len(seznam) - 1
@@ -45,12 +46,25 @@ def binary_search(seznam, cislo):
         else:
             return stred
 
+rada = unordered_sequence(1000)
+
+
+
 
 def main():
+    times = []
     sequential_data=read_data("sequential.json","ordered_numbers")
     print(sequential_data)
     print(linear_search(sequential_data,9))
     print(binary_search(sequential_data, 23))
+
+    start = time.perf_counter()
+    linear_search(rada, 9)
+    end = time.perf_counter()
+    duration = end - start
+    print(f"Doba výpočtu lineární: {duration:.8f} ")
+    times.append(duration)
+    print(times)
 
 if __name__ == '__main__':
     main()
