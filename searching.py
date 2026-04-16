@@ -46,25 +46,26 @@ def binary_search(seznam, cislo):
         else:
             return stred
 
-rada = unordered_sequence(1000)
 
+times = []
+rada = unordered_sequence(1000)
+start = time.perf_counter()
+linear_search(rada, 9)
+end = time.perf_counter()
+duration = end - start
+print(f"Doba výpočtu lineární: {duration:.8f} ")
+times = times.append(duration)
+print(times)
 
 
 
 def main():
-    times = []
     sequential_data=read_data("sequential.json","ordered_numbers")
     print(sequential_data)
     print(linear_search(sequential_data,9))
     print(binary_search(sequential_data, 23))
 
-    start = time.perf_counter()
-    linear_search(rada, 9)
-    end = time.perf_counter()
-    duration = end - start
-    print(f"Doba výpočtu lineární: {duration:.8f} ")
-    times.append(duration)
-    print(times)
+
 
 if __name__ == '__main__':
     main()
